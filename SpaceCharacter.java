@@ -18,14 +18,12 @@ abstract class SpaceCharacter
 
     public SpaceCharacter()
     {
-        // initialise instance variables
         x = 0;
         y = 0;
     }
 
     public SpaceCharacter(int x, int y, int w, int h, int s, String u)
     {
-        // initialise instance variables
         this.x = x;
         this.y = y;
         this.w = w;
@@ -39,8 +37,7 @@ abstract class SpaceCharacter
         }
         catch(Exception e)
         {
-            //feel free to do something here, this is mainly useful if you aren't getting your ship to show up
-        }
+            }
     }
 
     public abstract void move(int direction);
@@ -54,7 +51,6 @@ abstract class SpaceCharacter
 
     public void setPos( int x, int y)
     {
-        //add code here
         x = getX();
         y = getY();
     }

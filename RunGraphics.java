@@ -23,11 +23,12 @@ public class RunGraphics {
     }
 
     public RunGraphics() {
-        frame = new JFrame("Space Invaders Game");
+        frame = new JFrame("Space Invaders Game  (s14811)");
         frame.setSize(fW, fH);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setPreferredSize(frame.getSize());
+        frame.setResizable(false);
         frame.add(new showGraphics(frame.getSize()));
 
         frame.pack();
@@ -74,7 +75,7 @@ public class RunGraphics {
             setDoubleBuffered(true);
 
             try {
-                bgspace = ImageIO.read(new File("bgspace.png"));
+                bgspace = ImageIO.read(new File("bg.png"));
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -106,12 +107,10 @@ public class RunGraphics {
         @Override
         public void paintComponent(Graphics g) {
 
-            Graphics2D g2 = (Graphics2D) g;// g2 is the graphics object that we need to use
+            Graphics2D g2 = (Graphics2D) g;
 
-            // to draw things to the screen
             Dimension d = getSize();
 
-            // create a background
             g2.setColor(Color.white);
             g2.fillRect(0, 0, d.width, d.height);
 
@@ -143,13 +142,12 @@ public class RunGraphics {
                         a[r][c].draw(g2);
                 }
             }
-        } // end of paintcomponent
+        } 
 
         public void hitDetect() {
             for (int r = 0; r < a.length; r++) {
                 for (int c = 0; c < a[0].length; c++) {
 
-                    // if ( a[r][c].isVisible() ) {//&& shot.isVisible()
                     if (a[r][c].isVis == true && sh.getX() + sh.getWidth() >= a[r][c].getX() &&
                             sh.getX() <= a[r][c].getX() + a[r][c].getWidth() &&
                             sh.getY() + sh.getHeight() >= (a[r][c].getY()) &&
@@ -175,7 +173,7 @@ public class RunGraphics {
                     }
                 }
             }
-            // check if we need to switch directions
+            
             for (int r = 0; r < a.length; r++) {
                 for (int c = 0; c < a[0].length; c++) {
 
@@ -237,7 +235,6 @@ public class RunGraphics {
         }
 
         public void keyPressed(KeyEvent e) {
-            // System.out.println("Key: " + e.getKeyCode());
             int k = e.getKeyCode();
 
             ////
@@ -265,16 +262,15 @@ public class RunGraphics {
             beforeTime = System.currentTimeMillis();
             int animationDelay = 37;
             long time = System.currentTimeMillis();
-            while (true) {// infinite loop
-                // spriteManager.update();
+            while (true) {
                 repaint();
                 try {
                     time += animationDelay;
                     Thread.sleep(Math.max(0, time - System.currentTimeMillis()));
                 } catch (InterruptedException e) {
                     System.out.println(e);
-                } // end catch
-            } // end while loop
-        }// end of run
+                } 
+            } 
+        }
     }
 }
